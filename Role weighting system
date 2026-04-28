@@ -1,0 +1,9 @@
+// RoleModel.h
+#pragma once
+#include <unordered_map>
+#include <string>
+
+class RoleModel {
+public:
+    std::unordered_map<std::string, double> weights;
+};
