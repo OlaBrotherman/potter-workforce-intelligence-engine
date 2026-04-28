@@ -1,0 +1,9 @@
+// DatabaseRecord.h
+#pragma once
+#include <string>
+
+class DatabaseRecord {
+public:
+    int id;
+    virtual ~DatabaseRecord() = default;
+};
