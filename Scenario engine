@@ -1,0 +1,12 @@
+// Scenario.h
+#pragma once
+#include "Employee.h"
+#include "RiskModel.h"
+
+class Scenario {
+public:
+    static double simulateRaise(Employee e, double newCompa) {
+        e.metrics["compa_ratio"] = newCompa;
+        return RiskModel::compute(e);
+    }
+};
