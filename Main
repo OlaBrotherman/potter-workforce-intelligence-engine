@@ -1,0 +1,39 @@
+#include <iostream>
+#include "Employee.h"
+#include "RoleModel.h"
+#include "Evaluator.h"
+#include "RiskModel.h"
+#include "Scenario.h"
+
+int main() {
+    Employee e;
+    e.id = 1;
+    e.role = "Backend Engineer";
+    e.tenure_months = 24;
+
+    e.metrics = {
+        {"delivery_score", 0.8},
+        {"quality_score", 0.75},
+        {"engagement", 0.6},
+        {"manager_relationship", 0.7},
+        {"growth_opportunity", 0.5},
+        {"compa_ratio", 0.9}
+    };
+
+    RoleModel backend;
+    backend.weights = {
+        {"delivery_score", 1.4},
+        {"quality_score", 1.4}
+    };
+
+    double fit = Evaluator::roleFit(e, backend);
+    double risk = RiskModel::compute(e);
+
+    std::cout << "Fit: " << fit << "\n";
+    std::cout << "Risk: " << risk << "\n";
+
+    double newRisk = Scenario::simulateRaise(e, 1.1);
+    std::cout << "Risk after raise: " << newRisk << "\n";
+
+    return 0;
+}
