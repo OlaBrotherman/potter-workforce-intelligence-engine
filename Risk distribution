@@ -1,0 +1,7 @@
+double averageRisk(const std::vector<Employee>& employees) {
+    double total = 0;
+    for (const auto& e : employees) {
+        total += RiskModel::compute(e);
+    }
+    return total / employees.size();
+}
