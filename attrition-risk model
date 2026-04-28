@@ -1,0 +1,25 @@
+// RiskModel.h
+#pragma once
+#include "Employee.h"
+
+class RiskModel {
+public:
+    static double compute(const Employee& e) {
+        double risk = 0;
+
+        double engagement = e.getMetric("engagement");
+        double manager = e.getMetric("manager_relationship");
+        double growth = e.getMetric("growth_opportunity");
+        double compa = e.getMetric("compa_ratio");
+
+        risk += (1 - engagement) * 0.3;
+        risk += (1 - manager) * 0.2;
+        risk += (1 - growth) * 0.2;
+        risk += (1 - compa) * 0.15;
+
+        if (e.tenure_months >= 18 && e.tenure_months <= 36)
+            risk += 0.1;
+
+        return risk > 1.0 ? 1.0 : risk;
+    }
+};
