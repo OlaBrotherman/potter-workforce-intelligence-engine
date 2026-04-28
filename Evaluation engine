@@ -1,0 +1,19 @@
+// Evaluator.h
+#pragma once
+#include "Employee.h"
+#include "RoleModel.h"
+
+class Evaluator {
+public:
+    static double roleFit(const Employee& e, const RoleModel& model) {
+        double score = 0;
+        double totalWeight = 0;
+
+        for (const auto& [metric, weight] : model.weights) {
+            score += e.getMetric(metric) * weight;
+            totalWeight += weight;
+        }
+
+        return totalWeight > 0 ? score / totalWeight : 0;
+    }
+};
