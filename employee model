@@ -1,0 +1,18 @@
+// Employee.h
+#pragma once
+#include "DatabaseRecord.h"
+#include <string>
+#include <unordered_map>
+
+class Employee : public DatabaseRecord {
+public:
+    std::string role;
+    int tenure_months;
+
+    std::unordered_map<std::string, double> metrics;
+
+    double getMetric(const std::string& key) const {
+        auto it = metrics.find(key);
+        return (it != metrics.end()) ? it->second : 0.0;
+    }
+};
