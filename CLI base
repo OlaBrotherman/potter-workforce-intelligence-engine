@@ -1,0 +1,14 @@
+#include <iostream>
+
+void showMenu() {
+    std::cout << "\n----------------------------------------\n";
+    std::cout << "Workforce Intelligence Engine\n";
+    std::cout << "----------------------------------------\n";
+    std::cout << "1. View Employee Rankings\n";
+    std::cout << "2. View High-Risk Employees\n";
+    std::cout << "3. Run Scenario Simulation\n";
+    std::cout << "4. Show Summary Metrics\n";
+    std::cout << "5. Exit\n";
+    std::cout << "----------------------------------------\n";
+    std::cout << "Select option: ";
+}
