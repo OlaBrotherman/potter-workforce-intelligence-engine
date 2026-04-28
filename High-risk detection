@@ -1,0 +1,11 @@
+std::vector<Employee> highRiskEmployees(const std::vector<Employee>& employees) {
+    std::vector<Employee> result;
+
+    for (const auto& e : employees) {
+        if (RiskModel::compute(e) > 0.6) {
+            result.push_back(e);
+        }
+    }
+
+    return result;
+}
