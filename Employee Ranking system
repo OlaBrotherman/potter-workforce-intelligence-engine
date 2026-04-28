@@ -1,0 +1,18 @@
+#include <algorithm>
+
+std::vector<std::pair<Employee, double>> rankEmployees(
+    const std::vector<Employee>& employees,
+    const RoleModel& model
+) {
+    std::vector<std::pair<Employee, double>> scored;
+
+    for (const auto& e : employees) {
+        double score = Evaluator::roleFit(e, model);
+        scored.push_back({e, score});
+    }
+
+    std::sort(scored.begin(), scored.end(),
+        [](auto& a, auto& b) { return a.second > b.second; });
+
+    return scored;
+}
